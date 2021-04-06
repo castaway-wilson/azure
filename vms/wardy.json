@@ -10,9 +10,6 @@
             "defaultValue": "/subscriptions/42deb712-1e14-4f9a-ba87-0665e3a7637f/resourceGroups/GFFA-RG/providers/Microsoft.Compute/disks/GFFA-AZ-01_OsDisk_1_c3c1f309ed184bf894af47762c4d90b1",
             "type": "String"
         },
-        "networkInterfaces_gffa_az_01823_externalid": {
-            "type": "String"
-        }
     },
     "variables": {},
     "resources": [
