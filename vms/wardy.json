@@ -11,7 +11,6 @@
             "type": "String"
         },
         "networkInterfaces_gffa_az_01823_externalid": {
-            "defaultValue": "/subscriptions/42deb712-1e14-4f9a-ba87-0665e3a7637f/resourceGroups/GFFA-RG/providers/Microsoft.Network/networkInterfaces/gffa-az-01823",
             "type": "String"
         }
     },
