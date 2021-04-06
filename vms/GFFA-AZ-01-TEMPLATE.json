@@ -1,0 +1,77 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachines_GFFA_AZ_01_name": {
+            "defaultValue": "GFFA-AZ-01",
+            "type": "String"
+        },
+        "disks_GFFA_AZ_01_OsDisk_1_c3c1f309ed184bf894af47762c4d90b1_externalid": {
+            "defaultValue": "/subscriptions/42deb712-1e14-4f9a-ba87-0665e3a7637f/resourceGroups/GFFA-RG/providers/Microsoft.Compute/disks/GFFA-AZ-01_OsDisk_1_c3c1f309ed184bf894af47762c4d90b1",
+            "type": "String"
+        },
+        "networkInterfaces_gffa_az_01823_externalid": {
+            "defaultValue": "/subscriptions/42deb712-1e14-4f9a-ba87-0665e3a7637f/resourceGroups/GFFA-RG/providers/Microsoft.Network/networkInterfaces/gffa-az-01823",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2020-12-01",
+            "name": "[parameters('virtualMachines_GFFA_AZ_01_name')]",
+            "location": "francecentral",
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_DS1_v2"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsServer",
+                        "offer": "WindowsServer",
+                        "sku": "2016-datacenter-gensecond",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Windows",
+                        "name": "[concat(parameters('virtualMachines_GFFA_AZ_01_name'), '_OsDisk_1_c3c1f309ed184bf894af47762c4d90b1')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            }
+                    },
+                    "dataDisks": []
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_GFFA_AZ_01_name')]",
+                    "adminUsername": "mwadmin",
+                    "adminPassword": "Qw3rtyui0p!",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true,
+                        "patchSettings": {
+                            "patchMode": "AutomaticByOS",
+                            "enableHotpatching": false
+                        }
+                    },
+                    "secrets": [],
+                    "allowExtensionOperations": true,
+                    "requireGuestProvisionSignal": true
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[parameters('networkInterfaces_gffa_az_01823_externalid')]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true
+                    }
+                }
+            }
+        }
+    ]
+}
