@@ -10,6 +10,10 @@
             "defaultValue": "/subscriptions/42deb712-1e14-4f9a-ba87-0665e3a7637f/resourceGroups/GFFA-RG/providers/Microsoft.Compute/disks/GFFA-AZ-01_OsDisk_1_c3c1f309ed184bf894af47762c4d90b1",
             "type": "String"
         },
+        "networkInterfaces_gffa_az_01823_externalid": {
+            "defaultValue": "/subscriptions/42deb712-1e14-4f9a-ba87-0665e3a7637f/resourceGroups/GFFA-RG/providers/Microsoft.Network/networkInterfaces/gffa-az-01823",
+            "type": "String"
+        }
     },
     "variables": {},
     "resources": [
@@ -17,7 +21,7 @@
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2020-12-01",
             "name": "[parameters('virtualMachines_GFFA_AZ_01_name')]",
-            "location": "[resourceGroup().location]",
+            "location": "uksouth",
             "properties": {
                 "hardwareProfile": {
                     "vmSize": "Standard_DS1_v2"
@@ -35,7 +39,8 @@
                         "createOption": "FromImage",
                         "caching": "ReadWrite",
                         "managedDisk": {
-                            "storageAccountType": "Premium_LRS"
+                            "storageAccountType": "Premium_LRS",
+                            "id": "[parameters('disks_GFFA_AZ_01_OsDisk_1_c3c1f309ed184bf894af47762c4d90b1_externalid')]"
                         },
                         "diskSizeGB": 127
                     },
@@ -44,7 +49,6 @@
                 "osProfile": {
                     "computerName": "[parameters('virtualMachines_GFFA_AZ_01_name')]",
                     "adminUsername": "mwadmin",
-                    "adminPassword": "Qw3rtyu10p!",
                     "windowsConfiguration": {
                         "provisionVMAgent": true,
                         "enableAutomaticUpdates": true,
@@ -59,7 +63,9 @@
                 },
                 "networkProfile": {
                     "networkInterfaces": [
-                    
+                        {
+                            "id": "[parameters('networkInterfaces_gffa_az_01823_externalid')]"
+                        }
                     ]
                 },
                 "diagnosticsProfile": {
