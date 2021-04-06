@@ -2,16 +2,16 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "virtualMachines_GFFA_AZ_01_name": {
-            "defaultValue": "GFFA-AZ-01",
+        "virtualMachines_GFFA_AZ_02_name": {
+            "defaultValue": "GFFA-AZ-02",
             "type": "String"
         },
-        "disks_GFFA_AZ_01_OsDisk_1_c3c1f309ed184bf894af47762c4d90b1_externalid": {
-            "defaultValue": "/subscriptions/42deb712-1e14-4f9a-ba87-0665e3a7637f/resourceGroups/GFFA-RG/providers/Microsoft.Compute/disks/GFFA-AZ-01_OsDisk_1_c3c1f309ed184bf894af47762c4d90b1",
+        "disks_GFFA_AZ_02_OsDisk_1_c3c1f309ed184bf894af47762c4d90b1_externalid": {
+            "defaultValue": "/subscriptions/42deb712-1e14-4f9a-ba87-0665e3a7637f/resourceGroups/GFFA-RG/providers/Microsoft.Compute/disks/GFFA-AZ-02_OsDisk_1_c3c1f309ed184bf894af47762c4d90b1",
             "type": "String"
         },
-        "networkInterfaces_gffa_az_01823_externalid": {
-            "defaultValue": "/subscriptions/42deb712-1e14-4f9a-ba87-0665e3a7637f/resourceGroups/GFFA-RG/providers/Microsoft.Network/networkInterfaces/gffa-az-01823",
+        "networkInterfaces_gffa_az_02823_externalid": {
+            "defaultValue": "/subscriptions/42deb712-1e14-4f9a-ba87-0665e3a7637f/resourceGroups/GFFA-RG/providers/Microsoft.Network/networkInterfaces/gffa-az-02823",
             "type": "String"
         }
     },
@@ -20,7 +20,7 @@
         {
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2020-12-01",
-            "name": "[parameters('virtualMachines_GFFA_AZ_01_name')]",
+            "name": "[parameters('virtualMachines_GFFA_AZ_02_name')]",
             "location": "[resourceGroup().location]",
             "properties": {
                 "hardwareProfile": {
@@ -35,7 +35,7 @@
                     },
                     "osDisk": {
                         "osType": "Windows",
-                        "name": "[concat(parameters('virtualMachines_GFFA_AZ_01_name'), '_OsDisk_1_c3c1f309ed184bf894af47762c4d90b1')]",
+                        "name": "[concat(parameters('virtualMachines_GFFA_AZ_02_name'), '_OsDisk_1_c3c1f309ed184bf894af47762c4d90b1')]",
                         "createOption": "FromImage",
                         "caching": "ReadWrite",
                         "managedDisk": {
@@ -45,7 +45,7 @@
                     "dataDisks": []
                 },
                 "osProfile": {
-                    "computerName": "[parameters('virtualMachines_GFFA_AZ_01_name')]",
+                    "computerName": "[parameters('virtualMachines_GFFA_AZ_02_name')]",
                     "adminUsername": "mwadmin",
                     "adminPassword": "Qwertyui0p!",
                     "windowsConfiguration": {
@@ -63,7 +63,7 @@
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "id": "[parameters('networkInterfaces_gffa_az_01823_externalid')]"
+                            "id": "[parameters('networkInterfaces_gffa_az_02823_externalid')]"
                         }
                     ]
                 },
