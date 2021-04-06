@@ -39,7 +39,7 @@
                         "createOption": "FromImage",
                         "caching": "ReadWrite",
                         "managedDisk": {
-                            "storageAccountType": "Premium_LRS",
+                            "storageAccountType": "Premium_LRS"
                         },
                         "diskSizeGB": 127
                     },
