@@ -21,7 +21,7 @@
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2020-12-01",
             "name": "[parameters('virtualMachines_GFFA_AZ_01_name')]",
-            "location": "uksouth",
+            "location": "[resourceGroup().location]",
             "properties": {
                 "hardwareProfile": {
                     "vmSize": "Standard_DS1_v2"
