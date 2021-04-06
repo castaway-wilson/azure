@@ -59,9 +59,7 @@
                 },
                 "networkProfile": {
                     "networkInterfaces": [
-                        {
-                            "id": "[parameters('networkInterfaces_gffa_az_01823_externalid')]"
-                        }
+                    
                     ]
                 },
                 "diagnosticsProfile": {
